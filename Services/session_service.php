@@ -1,25 +1,20 @@
 <?php 
     function login_Session ($credentials) {
        $_SESSION['login'] = false;
-        include_once INCLUDE_PATH. './Services/user_service.php';
+        include_once __DIR__. '/user_service.php';
     
         $login_info = list_Users();
         foreach($login_info as $key => $value)
        
         
         {
-            // print_r($value['username']);
-            // print_r($value['password']);
-            // print_r($credentials['username']);
-            // print_r($credentials['password']);
+            
             if($value['username'] == $credentials['username'] &&
              $value['password'] == $credentials['password']){
-                header('Location = http://localhost:8000/?f=showHome');
-                 echo('Login efetuado com sucesso');
+              
                 $_SESSION['login'] = true ;
                 $_SESSION['username'] = $_POST['username'];
-                // print_r($_SESSION);
-                
+                header('Location: /?f=showHome');                
 
         }
     }   
@@ -27,10 +22,8 @@
 
             if($_SESSION['login'] != true){
                 echo("Não foi possível realizar o login.");
-                view_user_form();
+                header('Location: /');
             }
-            // print_r($_SESSION['login']);
-            // var_dump($_SESSION['login']);
     }
 
     /*
