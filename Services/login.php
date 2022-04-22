@@ -11,14 +11,14 @@
 <body>
     
 </body>
-<form action="http://localhost:8000/?f=listUsers" method="POST">
+<form action="http://localhost:8000/?f=loginSession" method="POST">
         <h2>Área de Login:</h2>
     <label>Usuário</label>
         <input type="text" name="username">
     <label>Senha</label>
         <input type="password" name="password">
-    <label>E-mail</label>
-        <input type="text" name="email">
+    <!-- <label>E-mail</label>
+        <input type="text" name="email"> -->
 
     <input type="submit" value="Enviar">
 

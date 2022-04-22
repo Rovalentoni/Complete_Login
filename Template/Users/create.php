@@ -12,12 +12,12 @@
 
 <form action="http://localhost:8000/?f=createUser" method="POST">
         <h2>Área de Cadastro:</h2>
-    <label>
-        <input type="text" name="username">Usuário</label>
-    <label>
-        <input type="password" name="password">Senha</label>
-    <label>
-        <input type="text" name="email">E-mail</label>
+    <label>Usuário
+        <input type="text" name="username"></label>
+    <label>Senha
+        <input type="password" name="password"></label>
+    <label>E-mail
+        <input type="text" name="email"></label>
 
     <input type="submit" value="Enviar">
 
@@ -25,25 +25,3 @@
 
 </html>
 
-
-
-<?php
-
-
-function jsonOriginal()
-{
-    $usersOriginais = [
-        ["username" => "Rodrigo", "email" => "Rodrigo@hotmail.com", "password" => "sourodrigo"],
-        ["username" => "Beatriz", "email" => "beatriz@hotmail.com", "password" => "soubeatriz"],
-        ["username" => "Gabriel", "email" => "Gabriel@hotmail.com", "password" => "sougabriel"]
-    ];
-    $jsonOriginal = json_decode(file_get_contents('./Data/users.json'), true);
-    // echo(count($jsonOriginal, COUNT_RECURSIVE));
-    // var_dump($jsonOriginal);
-    
-    if(is_countable($jsonOriginal) && count($jsonOriginal, COUNT_RECURSIVE) < 13 || $jsonOriginal == NULL){
-     $jsonOriginal[] = $usersOriginais;
-     file_put_contents('./Data/users.json', json_encode($jsonOriginal));
-}}
-jsonOriginal();
-?>

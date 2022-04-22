@@ -12,22 +12,41 @@
 
 </body>
 
-<h1>Bem vindo, <?php echo ($_SESSION['login'] ? $_POST['username'] : "visitante") ?> </h1>
-<a href="/?f=view_user_form>"> Adicionar</a>
-<a href="/?f="> Deletar</a>
+<h1>Bem vindo, <?php include_once INCLUDE_PATH . './Services/session_service.php';
+                if (isset($_SESSION['username'])) {
+                    echo ($_SESSION['username']);
+                } else
+                    echo ("visitante");
+
+                // echo ($_SESSION['login'] ? $_POST['username'] : "visitante") 
+                ?> </h1>
+<a href="/?f=createUserForm"> Adicionar</a>
+<a href="/?f=deleteForm"> Deletar</a> 
 
 <ul>
 
     <?php
-        foreach($userList as $key => $value):
-            ?> <li>
-                <?php 
-                    echo($value['username'])
+    function showUsers()
+    {
+        include_once INCLUDE_PATH . '/Services/user_service.php';
+        $userList = list_Users();
+        ?> <ol> <?php
+        foreach ($userList as $key => $value) {
+    ?> <li>
+                <?php
+                print_r($value['username']);
+                
                 ?>
             </li>
-        <?php endforeach ?>
+    <?php } ?> 
+            </ol>           
+
+            <?php }
+
+    showUsers();
     ?>
 
-</ul>
+
+
 
 </html>
