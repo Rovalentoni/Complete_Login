@@ -65,17 +65,23 @@ function edit_User($param)
                 $passNew = $_POST['password'];
                 $emailNew = $_POST['email'];
                 $idNew = $_POST['id'];
-
+                    if (empty($userNew) || empty($passNew) || empty($emailNew)) {
+                        include_once __DIR__.'/../Template/Users/edit.php';
+                        echo "Não é possível deixar dados em branco";
+                    } else {
                     foreach($infoOld as $key => $value) {
                         $idOld = $value['id'];
                             if($idOld == $idNew) {
                             $value['username'] = $userNew;
                             $value['password'] = $passNew;
                             $value['email'] = $emailNew;
+                            $infoOld[$key] = $value;
                             file_put_contents('./Data/users.json',json_encode($infoOld));
-                    }}
-                        
+
+                    }}}
+
                             header('Location:/?f=showHome');
+
             };
 
                 ?>

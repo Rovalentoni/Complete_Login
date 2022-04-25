@@ -4,25 +4,20 @@
         include_once __DIR__. '/user_service.php';
     
         $login_info = list_Users();
-        foreach($login_info as $key => $value)
-       
-        
-        {
-            
+        foreach($login_info as $key => $value) 
+
+        {       
             if($value['username'] == $credentials['username'] &&
              $value['password'] == $credentials['password']){
               
                 $_SESSION['login'] = true ;
                 $_SESSION['username'] = $_POST['username'];
                 header('Location: /?f=showHome');                
-
         }
     }   
-        
-
             if($_SESSION['login'] != true){
-                echo("Não foi possível realizar o login.");
-                header('Location: /');
+                view_user_form();
+                echo("Não foi possível realizar o login");
             }
     }
 
@@ -82,6 +77,4 @@
             
 
 
-    */  
-
-?>
+    */

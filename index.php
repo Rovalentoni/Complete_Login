@@ -55,11 +55,7 @@ function deleteUsers() {
 function loginSession() {
     include_once __DIR__. '/Services/session_service.php';
     login_Session($_POST);
-    if($_SESSION['login'] == true){
-            showHome();
-    } else {
-        echo("não foi possível realizar o login");
-    }
+    
 }
 
 function showHome() {
