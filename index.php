@@ -7,11 +7,11 @@ ini_set('error_reporting', E_ALL);
 //CONTROLLER
 
 function view_home_form()
-{
-    include_once __DIR__ . '/Services/login.php';
-    if(isset($_GET['aviso_Login'])){
-        echo "Você precisa realizar o login para continuar";
+{   
+    if(isset($_SESSION['login'])){
+        header('Location:/?f=showHome');
     }
+    include_once __DIR__ . '/Services/login.php';
     include_once __DIR__ . '/Services/user_service.php';
     json_Original();
 }
@@ -58,16 +58,7 @@ function editUser() {
         include_once __DIR__. '/Services/user_service.php';
         edit_User($_POST['id']);    } else { 
                 header('Location:/?f=view_home_form&aviso_Login=1'); 
-    }}
-    
-
-function deleteForm() {
-    if (isset($_SESSION['login'])) {
-        include_once __DIR__ . '/Template/Users/delete.php';
-    } else { 
-                header('Location:/?f=view_home_form&aviso_Login=1'); 
-    }}
-    
+    }}  
 
 
 

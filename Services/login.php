@@ -10,7 +10,6 @@
 </head>
 <body>
     
-</body>
 <form action="http://localhost:8000/?f=loginSession" method="POST">
         <h2>Área de Login:</h2>
     <label>Usuário</label>
@@ -21,6 +20,12 @@
         <input type="text" name="email"> -->
 
     <input type="submit" value="Enviar">
+    <?php if(isset($_GET['aviso_Login'])){
+        echo "Você precisa realizar o login para continuar";
+    } ?>
+
+
+    </body>
 
 </form>
 </html>
