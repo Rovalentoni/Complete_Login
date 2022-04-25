@@ -1,6 +1,8 @@
 <?php
 
 session_start();
+ini_set('error_reporting', E_ALL);
+
 
 //CONTROLLER
 
@@ -30,13 +32,13 @@ function listUsers() {
 
 function editForm() {
     include_once __DIR__. '/Services/user_service.php';
-    $currentUsers = list_Users();
     include_once __DIR__. '/Template/Users/edit.php';
 }
 
 function editUser() {
-    
-    edit_User();
+    include_once __DIR__. '/Services/user_service.php';
+
+    edit_User($_POST['id']);
 }
 
 function deleteForm() {

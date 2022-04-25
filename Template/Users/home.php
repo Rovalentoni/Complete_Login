@@ -20,7 +20,8 @@
                 ?> </h1>
 <a href="/?f=createUserForm"> Adicionar</a>
 
-<ul>
+
+<ol>
     <?php foreach($users as $key => $value):?> 
         <li> 
             
@@ -31,7 +32,7 @@
     </li>   
  <?php endforeach; ?>
 
-</ul>
+</ol>
 
 
 </html>
