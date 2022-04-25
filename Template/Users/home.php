@@ -18,21 +18,32 @@
                 } else
                     echo ("visitante");
                 ?> </h1>
-<a href="/?f=createUserForm"> Adicionar</a>
+
 
 
 <ol>
     <?php foreach($users as $key => $value):?> 
         <li> 
             
-        <?php echo $value['username']; ?> 
-        <a href="/?f=deleteUsers&user_id=<?php echo $value['id'];?>"> Deletar </a>
+        <?php $info = $value['username'];
+        
+                echo $info; ?> 
+        <a href="/?f=viewForm&user_id=<?php echo $value['id'];?>"> Detalhes </a>
         <a href="/?f=editForm&user_id=<?php echo $value['id'];?>"> Editar  </a>
+        <a href="/?f=deleteUsers&user_id=<?php echo $value['id'];?>"> Deletar </a>
+
     
     </li>   
  <?php endforeach; ?>
 
 </ol>
 
+<br><br>
+
+<a href="/?f=createUserForm" > -Adicionar</a>
+
+<br><br>
+
+<a href="/?f=logout" > -Logout </a>
 
 </html>

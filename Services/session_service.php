@@ -12,11 +12,12 @@
               
                 $_SESSION['login'] = true ;
                 $_SESSION['username'] = $_POST['username'];
-                header('Location: /?f=showHome');                
+                header('Location: /?f=showHome');
+                die;                
         }
     }   
             if($_SESSION['login'] != true){
-                view_user_form();
+                view_home_form();
                 echo("Não foi possível realizar o login");
             }
     }
